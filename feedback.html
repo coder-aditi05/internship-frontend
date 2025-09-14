@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback | AI Internship Recommendation</title>
+  <style>
+    /* ====== General Reset ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #9c27b0, #2196f3);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ====== Navbar ====== */
+    nav {
+      background: linear-gradient(90deg, #1a73e8, #0d47a1);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Logo + Title */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 42px;
+      width: 42px;
+      border-radius: 50%;
+      border: 2px solid #ffcc00;
+    }
+
+    .logo h1 {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px; 
+      transition: color 0.3s;
+    }
+
+    nav ul li a img {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Underline Animation */
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #ffcc00;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    nav ul li a:hover {
+      color: #ffcc00;
+    }
+
+    nav ul li a.active {
+      color: #ffcc00;
+      font-weight: bold;
+    }
+
+    /* ====== Feedback Section ====== */
+    .feedback-container {
+      flex: 1;
+      max-width: 650px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    /* Main Heading */
+    .feedback-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 26px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #2196f3, #9c27b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .feedback-container p {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #555;
+      font-style: italic;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    /* Sub Headings */
+    label.section-title {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      color: #1976d2;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #1976d2;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    /* Options */
+    .options {
+      display: flex;
+      gap: 15px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .options label {
+      background: #f5f5f5;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .options input {
+      display: none;
+    }
+
+    .options input:checked + label {
+      background: #1976d2;
+      color: #fff;
+      border-color: #1976d2;
+    }
+
+    /* Submit Button */
+    button {
+      background: linear-gradient(90deg, #2196f3, #9c27b0);
+      color: #fff;
+      border: none;
+      padding: 14px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+      transform: scale(1.03);
+    }
+
+    /* ====== Footer ====== */
+    footer {
+      background: #1976d2;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: auto;
+    }
+
+    /* ====== Animation ====== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+   <nav>
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
+      <h1>Internship Recommendation</h1>
+    </div>
+    <ul>
+      <li><a href="index.html" class="active"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home</a></li>
+      <li><a href="studentprofile.html"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile</a></li>
+     
+      <li><a href="top5.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Top Internships"> Top Internships</a></li>
+     
+      <li><a href="feedback.htnl"><img src="https://cdn-icons-png.flaticon.com/512/134/134914.png" alt="Feedback"> Feedback</a></li>
+      <li><a href="about.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="About"> About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Feedback Form -->
+  <div class="feedback-container">
+    <h2> AI-Based Internship Recommendation Feedback</h2>
+
+    <form>
+      <!-- Basic Info -->
+      <div class="form-group">
+        <label for="name" class="section-title">1. Basic Information</label>
+        <input type="text" id="name" placeholder="Your Name (optional)">
+        <input type="email" id="email" placeholder="Email / Student ID" required>
+      </div>
+
+      <!-- Recommendation Experience -->
+      <div class="form-group">
+        <label class="section-title"> 2. Recommendation Experience</label>
+        <p>Did you find the recommended internships useful?</p>
+        <div class="options">
+          <input type="radio" id="yes" name="useful" value="Yes"><label for="yes">Yes </label>
+          <input type="radio" id="no" name="useful" value="No"><label for="no">No </label>
+          <input type="radio" id="somewhat" name="useful" value="Somewhat"><label for="somewhat">Somewhat </label>
+        </div>
+      </div>
+
+      <!-- Suggestions -->
+      <div class="form-group">
+        <label class="section-title"> 3. Suggestions & Improvements</label>
+        <p>Do you want an option to add more skills?</p>
+        <div class="options">
+          <input type="radio" id="addYes" name="skills" value="Yes"><label for="addYes">Yes </label>
+          <input type="radio" id="addNo" name="skills" value="No"><label for="addNo">No </label>
+        </div>
+        <textarea placeholder="Your suggestions to improve the system"></textarea>
+      </div>
+
+      <!-- Final Section -->
+      <div class="form-group">
+        <label class="section-title"> 4. Final Section</label>
+        <p>Overall Satisfaction</p>
+        <div class="options">
+          <input type="radio" id="excellent" name="satisfaction" value="Excellent"><label for="excellent">Excellent 🌟</label>
+          <input type="radio" id="good" name="satisfaction" value="Good"><label for="good">Good 👍</label>
+          <input type="radio" id="average" name="satisfaction" value="Average"><label for="average">Average 🙂</label>
+          <input type="radio" id="poor" name="satisfaction" value="Poor"><label for="poor">Poor 👎</label>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit">🚀 Submit Feedback</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 AI-Based Internship Recommendation Engine | Smart India Hackathon</p>
+  </footer>
+</body>
+</html>
