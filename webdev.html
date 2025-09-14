@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Details | PM Internship Scheme</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+  body {background: #eef3ff; color: #333;}
+
+  /* ===== NAVBAR ===== */
+  /* Navbar */
+    nav {
+      background: linear-gradient(90deg, #1a73e8, #0d47a1);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Logo + Title */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 42px;
+      width: 42px;
+      border-radius: 50%;
+      border: 2px solid #ffcc00;
+    }
+
+    .logo h1 {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px; /* icon और text के बीच gap */
+      transition: color 0.3s;
+    }
+
+    nav ul li a img {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Underline Animation */
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #ffcc00;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    nav ul li a:hover {
+      color: #ffcc00;
+    }
+
+    nav ul li a.active {
+      color: #ffcc00;
+      font-weight: bold;
+    }
+
+  /* ===== PAGE HEADING ===== */
+  .page-heading {
+    text-align:center; 
+    margin:50px auto 35px;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+    font-size:3rem; 
+    font-weight:700; 
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing:2px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .page-heading::after {
+    content:"";
+    display:block; 
+    width:0; 
+    height:4px; 
+    background:#ffd700;
+    margin:12px auto 0; 
+    border-radius:2px;
+    transition: width 0.5s ease;
+  }
+  .page-heading:hover::after {width:100px;}
+  .page-heading:hover {transform: translateY(-3px); text-shadow: 2px 2px 8px rgba(0,0,0,0.2);}
+
+  /* ===== DETAIL CONTAINER ===== */
+  .detail-container {
+    max-width:950px; margin:30px auto; background:#fff;
+    border-radius:15px; padding:35px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    border:3px solid transparent; transition: all 0.4s ease;
+  }
+  .detail-container:hover {
+    transform:translateY(-5px); 
+    box-shadow:0 15px 30px rgba(0,0,0,0.25); 
+    border-image: linear-gradient(45deg,#6a11cb,#2575fc) 1;
+  }
+
+  .badge {
+    display:inline-block; background:#2575fc; color:white; 
+    padding:7px 18px; border-radius:50px; font-weight:600; margin-bottom:20px;
+  }
+
+  .section {
+    margin-bottom:25px; padding:18px; border-left:5px solid #ffd700; border-radius:10px;
+    background:#f0f5ff; transition: all 0.3s ease;
+  }
+  .section:hover {
+    transform: scale(1.03); 
+    box-shadow:0 6px 18px rgba(0,0,0,0.1); 
+    background:#e3eaff;
+  }
+  .section h2 {color:#6a11cb; font-size:1.4rem; margin-bottom:10px;}
+  .section p, .section ul {color:#555; line-height:1.7; font-size:1rem;}
+  ul {padding-left:20px;}
+
+  /* ===== BUTTON ===== */
+  .apply-btn {
+    display:inline-block; text-decoration:none; padding:14px 28px; border-radius:50px;
+    background: linear-gradient(135deg,#6a11cb,#2575fc); color:white; font-weight:600;
+    font-size:1.05rem; transition: all 0.3s ease; box-shadow:0 6px 15px rgba(0,0,0,0.2);
+  }
+  .apply-btn:hover {
+    background: linear-gradient(135deg,#ffd700,#ffb400);
+    color:#2c3e91; transform:scale(1.08);
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {background:#1a73e8; color:white; text-align:center; padding:20px; margin-top:40px;}
+  footer a {color:#ffd700; margin:0 8px; text-decoration:none; font-weight:500;}
+  footer a:hover {text-decoration:underline;}
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
+      <h1>Internship Recommendation</h1>
+    </div>
+    <ul>
+      <li><a href="index.html" class="active"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home</a></li>
+      <li><a href="studentprofile.html"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile</a></li>
+     
+      <li><a href="top5.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Top Internships"> Top Internships</a></li>
+
+      <li><a href="feedback.html"><img src="https://cdn-icons-png.flaticon.com/512/134/134914.png" alt="Feedback"> Feedback</a></li>
+      <li><a href="about.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="About"> About</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HEADING -->
+  <div class="page-heading">Web Development Intern</div>
+
+  <!-- DETAIL CONTAINER -->
+  <div class="detail-container">
+    <div class="badge">Match Score: 89%</div>
+
+    <div class="section">
+      <h2>Organization</h2>
+      <p>PM Internship Portal Tech Team</p>
+    </div>
+
+    <div class="section">
+      <h2>About the Internship</h2>
+      <p>Assist in building scalable and responsive web applications for the PM Internship Portal, ensuring seamless user experience and functionality.</p>
+    </div>
+
+    <div class="section">
+      <h2>Responsibilities</h2>
+      <ul>
+        <li>Develop and maintain frontend and backend features.</li>
+        <li>Ensure web application performance and scalability.</li>
+        <li>Collaborate with designers and backend developers for seamless integration.</li>
+        <li>Implement new features based on user feedback and requirements.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Eligibility</h2>
+      <ul>
+        <li>Currently pursuing B.Tech/M.Tech in Computer Science or related field.</li>
+        <li>Knowledge of HTML, CSS, JavaScript, and backend frameworks.</li>
+        <li>Understanding of web development best practices and problem-solving skills.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Duration & Location</h2>
+      <p>6 months | New Delhi (Hybrid mode available)</p>
+    </div>
+
+    <a href="internship-detail.html" class="apply-btn">🚀 View Details</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 PM Internship Scheme | Designed with ❤ by Team</p>
+    <p><a href="#">LinkedIn</a> | <a href="#">Twitter</a> | <a href="#">GitHub</a></p>
+  </footer>
+
+</body>
+</html>
