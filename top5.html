@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 5 Recommendations</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f0f4ff, #ffffff);
+      color: #333;
+    }
+
+     /* Navbar */
+    nav {
+      background: linear-gradient(90deg, #1a73e8, #0d47a1);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Logo + Title */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 42px;
+      width: 42px;
+      border-radius: 50%;
+      border: 2px solid #ffcc00;
+    }
+
+    .logo h1 {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px; /* icon और text के बीच gap */
+      transition: color 0.3s;
+    }
+
+    nav ul li a img {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Underline Animation */
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #ffcc00;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    nav ul li a:hover {
+      color: #ffcc00;
+    }
+
+    nav ul li a.active {
+      color: #ffcc00;
+      font-weight: bold;
+    }
+
+    /* ===== GRID CARDS ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 0 40px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+    }
+
+    .title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #2c3e91;
+      margin-bottom: 8px;
+    }
+    .company {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .badge {
+      display: inline-block;
+      background: #2c3e91;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .description {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #2c3e91;
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #1b2870;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #2c3e91;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      margin-top: 30px;
+    }
+    footer p {
+      margin: 5px 0;
+    }
+    footer a {
+      color: #ffd700;
+      margin: 0 8px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
+      <h1>Internship Recommendation</h1>
+    </div>
+    <ul>
+      <li><a href="index.html" class="active"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home</a></li>
+      <li><a href="studentprofile.html"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile</a></li>
+     
+      <li><a href="top5.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Top Internships"> Top Internships</a></li>
+
+      <li><a href="feedback.html"><img src="https://cdn-icons-png.flaticon.com/512/134/134914.png" alt="Feedback"> Feedback</a></li>
+      <li><a href="about.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="About"> About</a></li>
+    </ul>
+  </nav>
+  <!-- PAGE TITLE -->
+  <h1>Top 5 Recommendations</h1>
+
+  <!-- INTERNSHIP CARDS -->
+  <div class="grid">
+    <div class="card">
+      <div class="title">AI Research Intern</div>
+      <div class="company">NITI Aayog - AI Division</div>
+      <div class="badge">Match Score: 95%</div>
+      <div class="description">Work on cutting-edge AI projects related to healthcare and agriculture.</div>
+      <a href="ai.html" class="btn">View Details</a>
+    </div>
+
+    <div class="card">
+      <div class="title">Data Science Intern</div>
+      <div class="company">Ministry of Education</div>
+      <div class="badge">Match Score: 92%</div>
+      <div class="description">Analyze student performance data to improve digital education platforms.</div>
+      <a href="datascience.html" class="btn">View Details</a>
+    </div>
+
+    <div class="card">
+      <div class="title">Web Development Intern</div>
+      <div class="company">PM Internship Portal Tech Team</div>
+      <div class="badge">Match Score: 89%</div>
+      <div class="description">Assist in building scalable web applications for the internship portal.</div>
+      <a href="webdev.html" class="btn">View Details</a>
+    </div>
+
+    <div class="card">
+      <div class="title">Cybersecurity Intern</div>
+      <div class="company">Ministry of IT</div>
+      <div class="badge">Match Score: 88%</div>
+      <div class="description">Work on projects related to national data protection and secure platforms.</div>
+      <a href="cyber.html" class="btn">View Details</a>
+    </div>
+
+    <div class="card">
+      <div class="title">Sustainability & AI Intern</div>
+      <div class="company">PM Green Energy Mission</div>
+      <div class="badge">Match Score: 85%</div>
+      <div class="description">Develop AI-driven models for energy efficiency and sustainability.</div>
+      <a href="sustainability.html" class="btn">View Details</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 PM Internship Scheme | Designed with ❤ by Team</p>
+    <p>
+      <a href="#">LinkedIn</a> | 
+      <a href="#">Twitter</a> | 
+      <a href="#">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>
