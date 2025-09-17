@@ -6,6 +6,148 @@
   <title>Signup | AI-Based Internship Recommendation Engine</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ===== CSS tumhara same rakha hai ===== */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+    body { background: linear-gradient(135deg,#e3f2fd,#90caf9); min-height:100vh; display:flex; flex-direction:column; }
+    nav { background: linear-gradient(90deg, #1a73e8, #0d47a1); color: white; display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo img { height: 42px; width: 42px; border-radius: 50%; border: 2px solid #ffcc00; }
+    .logo h1 { font-size: 20px; font-weight: bold; letter-spacing: 1px; }
+    nav ul { list-style: none; display: flex; gap: 25px; }
+    nav ul li { position: relative; }
+    nav ul li a { text-decoration: none; color: white; font-weight: 500; padding: 6px 8px; display: flex; align-items: center; gap: 6px; transition: color 0.3s; }
+    nav ul li a img { width: 18px; height: 18px; }
+    nav ul li a::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0%; height: 2px; background: #ffcc00; transition: width 0.3s ease; }
+    nav ul li a:hover::after { width: 100%; }
+    nav ul li a:hover { color: #ffcc00; }
+    nav ul li a.active { color: #ffcc00; font-weight: bold; }
+    .login-section { flex:1; display:flex; justify-content:center; align-items:center; padding:40px; }
+    .login-card { background: rgba(255,255,255,0.9); border-radius:20px; padding:40px 35px; width:400px; color:#1565c0; text-align:center; box-shadow:0 8px 30px rgba(0,0,0,0.2); animation: fadeInUp 0.8s ease; }
+    @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    .login-card h2 { font-size:1.8rem; margin-bottom:10px; color:#1565c0; font-weight:700; }
+    .login-card p {font-size:0.9rem; margin-bottom:20px; color:#555;}
+    .login-card input { width:100%; padding:12px 15px; margin:10px 0; border:1px solid #90caf9; border-radius:12px; background:#f9f9f9; color:#1565c0; font-size:1rem; outline:none; transition:0.3s; }
+    .login-card input::placeholder {color:#90a4ae;}
+    .login-card input:focus { border:1px solid #1565c0; background:white; transform:scale(1.02); }
+    .btn-gradient { width:100%; padding:12px; margin-top:15px; border:none; border-radius:25px; background: linear-gradient(135deg,#1565c0,#1e88e5); color:white; font-weight:600; font-size:1rem; cursor:pointer; box-shadow:0 6px 15px rgba(0,0,0,0.25); transition:all 0.3s ease; }
+    .btn-gradient:hover { transform:scale(1.08); background: linear-gradient(135deg,#1e88e5,#42a5f5); box-shadow:0 8px 22px rgba(0,0,0,0.3); }
+    .toggle-link { margin-top:20px; display:block; font-size:0.9rem; color:#1565c0; text-decoration:none; }
+    .toggle-link:hover {text-decoration:underline;}
+    footer { background:#1565c0; color:white; text-align:center; padding:15px; font-size:0.9rem; }
+    footer a {color:#bbdefb;text-decoration:none;font-weight:500;}
+    footer a:hover {text-decoration:underline;}
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
+      <h1>Internship Recommendation</h1>
+    </div>
+    <ul>
+      <li><a href="index.html" class="active"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home</a></li>
+      <li><a href="studentprofile.html"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile</a></li>
+      <li><a href="top5.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Top Internships"> Top Internships</a></li>
+      <li><a href="feedback.html"><img src="https://cdn-icons-png.flaticon.com/512/134/134914.png" alt="Feedback"> Feedback</a></li>
+      <li><a href="about.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="About"> About</a></li>
+    </ul>
+  </nav>
+
+  <!-- SIGNUP FORM -->
+  <div class="login-section">
+    <div class="login-card">
+      <h2>Create Account</h2>
+      <p>Join us and explore internship opportunities</p>
+      <form id="signupForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <button type="submit" class="btn-gradient">Sign Up</button>
+      </form>
+      <a href="login.html" class="toggle-link">Already have an account? Login</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 AI-Based Internship Recommendation | <a href="#">Team</a></p>
+  </footer>
+
+  <!-- ====== Signup Integration Script ====== -->
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match ❌");
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, username, password })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          alert("Signup successful ✅, please login now!");
+          window.location.href = "login.html";
+        } else {
+          alert(data.error || "Signup failed ❌");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Something went wrong!");
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup | AI-Based Internship Recommendation Engine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
 
     body {
@@ -260,8 +402,8 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
+  NAVBAR -->
+  <!-- <nav>
     <div class="logo">
       <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
       <h1>Internship Recommendation</h1>
@@ -275,10 +417,10 @@
       <li><a href="feedback.html"><img src="https://cdn-icons-png.flaticon.com/512/134/134914.png" alt="Feedback"> Feedback</a></li>
       <li><a href="about.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="About"> About</a></li>
     </ul>
-  </nav>
+  </nav> -->
 
   <!-- SIGNUP FORM -->
-  <div class="login-section">
+  <!-- <div class="login-section">
     <div class="login-card">
       <h2>Create Account</h2>
       <p>Join us and explore internship opportunities</p>
@@ -291,12 +433,12 @@
 
       <a href="login.html" class="toggle-link">Already have an account? Login</a>
     </div>
-  </div>
+  </div> -->
 
   <!-- FOOTER -->
-  <footer>
+  <!-- <footer>
     <p>© 2025 AI-Based Internship Recommendation | <a href="#">Team</a></p>
   </footer>
 
 </body>
-</html>
+</html> -->
