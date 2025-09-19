@@ -28,18 +28,9 @@
       z-index: 1000;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .logo img {
-      height: 42px; width: 42px;
-      border-radius: 50%; border: 2px solid #ffcc00;
-    }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo img { height: 42px; width: 42px; border-radius: 50%; border: 2px solid #ffcc00; }
     .logo h1 { font-size: 20px; font-weight: bold; letter-spacing: 1px; }
-
     nav ul { list-style: none; display: flex; gap: 25px; }
     nav ul li { position: relative; }
     nav ul li a {
@@ -57,7 +48,7 @@
     nav ul li a:hover { color: #ffcc00; }
     nav ul li a.active { color: #ffcc00; font-weight: bold; }
 
-    /* ===== SIGNUP SECTION ===== */
+    /* ===== LOGIN/SIGNUP CARD ===== */
     .login-section { flex:1; display:flex; justify-content:center; align-items:center; padding:40px; }
     .login-card {
       background: rgba(255,255,255,0.9);
@@ -67,29 +58,23 @@
       box-shadow:0 8px 30px rgba(0,0,0,0.2);
       animation: fadeInUp 0.8s ease;
     }
-    @keyframes fadeInUp {
-      from {opacity:0; transform:translateY(30px);}
-      to {opacity:1; transform:translateY(0);}
-    }
+    @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
     .login-card h2 { font-size:1.8rem; margin-bottom:10px; color:#1565c0; font-weight:700; }
-    .login-card p {font-size:0.9rem; margin-bottom:20px; color:#555;}
+    .login-card p { font-size:0.9rem; margin-bottom:20px; color:#555; }
     .login-card input {
       width:100%; padding:12px 15px; margin:10px 0;
       border:1px solid #90caf9; border-radius:12px;
       background:#f9f9f9; color:#1565c0; font-size:1rem;
       outline:none; transition:0.3s;
     }
-    .login-card input::placeholder {color:#90a4ae;}
-    .login-card input:focus {
-      border:1px solid #1565c0; background:white; transform:scale(1.02);
-    }
+    .login-card input::placeholder { color:#90a4ae; }
+    .login-card input:focus { border:1px solid #1565c0; background:white; transform:scale(1.02); }
     .btn-gradient {
       width:100%; padding:12px; margin-top:15px;
       border:none; border-radius:25px;
       background: linear-gradient(135deg,#1565c0,#1e88e5);
       color:white; font-weight:600; font-size:1rem;
-      cursor:pointer;
-      box-shadow:0 6px 15px rgba(0,0,0,0.25);
+      cursor:pointer; box-shadow:0 6px 15px rgba(0,0,0,0.25);
       transition:all 0.3s ease;
     }
     .btn-gradient:hover {
@@ -98,12 +83,13 @@
       box-shadow:0 8px 22px rgba(0,0,0,0.3);
     }
     .toggle-link { margin-top:20px; display:block; font-size:0.9rem; color:#1565c0; text-decoration:none; }
-    .toggle-link:hover {text-decoration:underline;}
+    .toggle-link:hover { text-decoration:underline; }
 
     /* ===== FOOTER ===== */
     footer { background:#1565c0; color:white; text-align:center; padding:15px; font-size:0.9rem; }
-    footer a {color:#bbdefb;text-decoration:none;font-weight:500;}
-    footer a:hover {text-decoration:underline;}
+    footer a { color:#bbdefb; text-decoration:none; font-weight:500; }
+    footer a:hover { text-decoration:underline; }
+
   </style>
 </head>
 <body>
@@ -123,11 +109,29 @@
     </ul>
   </nav>
 
-  <!-- SIGNUP FORM -->
+  <!-- LOGIN/SIGNUP CARD -->
   <div class="login-section">
     <div class="login-card">
       <h2>Create Account</h2>
-      <p>Join us and e
+      <p>Join us and explore internship opportunities</p>
+      <input type="text" placeholder="Full Name">
+      <input type="email" placeholder="Email">
+      <input type="text" placeholder="Username">
+      <input type="password" placeholder="Password">
+      <input type="password" placeholder="Confirm Password">
+      <button class="btn-gradient">Sign Up</button>
+      <a href="login.html" class="toggle-link">Already have an account? Login</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 AI-Based Internship Recommendation | <a href="#">Team</a></p>
+  </footer>
+
+</body>
+</html>
+
 
 
 

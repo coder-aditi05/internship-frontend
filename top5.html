@@ -1,110 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Top 5 Recommendations</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #f0f4ff, #ffffff);
-      color: #333;
-    }
-
-    nav {
-      background: linear-gradient(90deg, #1a73e8, #0d47a1);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 50px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .logo { display: flex; align-items: center; gap: 12px; }
-    .logo img { height: 42px; width: 42px; border-radius: 50%; border: 2px solid #ffcc00; }
-    .logo h1 { font-size: 20px; font-weight: bold; letter-spacing: 1px; }
-
-    nav ul { list-style: none; display: flex; gap: 25px; }
-    nav ul li { position: relative; }
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      padding: 6px 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.3s;
-    }
-    nav ul li a img { width: 18px; height: 18px; }
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0%;
-      height: 2px;
-      background: #ffcc00;
-      transition: width 0.3s ease;
-    }
-    nav ul li a:hover::after { width: 100%; }
-    nav ul li a:hover { color: #ffcc00; }
-    nav ul li a.active { color: #ffcc00; font-weight: bold; }
-
-    h1.page-title { text-align:center; margin:40px 0; font-size:2.5rem; color:#2c3e91; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 0 40px 40px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover { transform: translateY(-6px); box-shadow: 0 12px 20px rgba(0,0,0,0.2); }
-
-    .title { font-size: 1.4rem; font-weight: bold; color: #2c3e91; margin-bottom: 8px; }
-    .company { font-size: 1rem; font-weight: 500; color: #555; margin-bottom: 6px; }
-    .badge { display: inline-block; background: #2c3e91; color: white; padding: 6px 14px; border-radius: 50px; font-size: 0.85rem; font-weight: bold; margin-bottom: 12px; }
-    .description { font-size: 0.95rem; color: #666; line-height: 1.4; margin-bottom: 16px; }
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      background: #2c3e91;
-      color: white;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: background 0.3s ease;
-    }
-    .btn:hover { background: #1b2870; }
-
-    footer {
-      background: #2c3e91;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-      margin-top: 30px;
-    }
-    footer p { margin: 5px 0; }
-    footer a { color: #ffd700; margin: 0 8px; text-decoration: none; font-weight: 500; }
-    footer a:hover { text-decoration: underline; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 5 Recommendations | AI-Based Internship Recommendation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Poppins', sans-serif; margin:0; padding:0; background:linear-gradient(135deg,#f0f4ff,#ffffff); color:#333; }
+  nav { background:linear-gradient(90deg,#1a73e8,#0d47a1); color:white; display:flex; justify-content:space-between; align-items:center; padding:15px 50px; position:sticky; top:0; z-index:1000; box-shadow:0 4px 10px rgba(0,0,0,0.2); }
+  .logo { display:flex; align-items:center; gap:12px; }
+  .logo img { height:42px; width:42px; border-radius:50%; border:2px solid #ffcc00; }
+  .logo h1 { font-size:20px; font-weight:bold; letter-spacing:1px; }
+  nav ul { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+  nav ul li { position:relative; }
+  nav ul li a { text-decoration:none; color:white; font-weight:500; padding:6px 8px; display:flex; align-items:center; gap:6px; transition:color 0.3s; }
+  nav ul li a img { width:18px; height:18px; }
+  nav ul li a::after { content:""; position:absolute; left:0; bottom:-4px; width:0%; height:2px; background:#ffcc00; transition:width 0.3s ease; }
+  nav ul li a:hover::after { width:100%; }
+  nav ul li a:hover { color:#ffcc00; }
+  nav ul li a.active { color:#ffcc00; font-weight:bold; }
+  h1.page-title { text-align:center; margin:40px 0; font-size:2.5rem; color:#2c3e91; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; padding:0 40px 40px; max-width:1200px; margin:auto; }
+  .card { background:#fff; border-radius:16px; padding:20px; box-shadow:0 6px 15px rgba(0,0,0,0.1); transition:transform 0.3s ease, box-shadow 0.3s ease; }
+  .card:hover { transform:translateY(-6px); box-shadow:0 12px 20px rgba(0,0,0,0.2); }
+  .title { font-size:1.4rem; font-weight:bold; color:#2c3e91; margin-bottom:8px; }
+  .company { font-size:1rem; font-weight:500; color:#555; margin-bottom:6px; }
+  .badge { display:inline-block; background:#2c3e91; color:white; padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:bold; margin-bottom:12px; }
+  .description { font-size:0.95rem; color:#666; line-height:1.4; margin-bottom:16px; }
+  .btn { display:inline-block; text-decoration:none; padding:10px 18px; border-radius:8px; background:#2c3e91; color:white; font-size:0.95rem; font-weight:600; transition:background 0.3s ease; }
+  .btn:hover { background:#1b2870; }
+  footer { background:#2c3e91; color:white; text-align:center; padding:15px 10px; margin-top:30px; }
+  footer p { margin:5px 0; }
+  footer a { color:#ffd700; margin:0 8px; text-decoration:none; font-weight:500; }
+  footer a:hover { text-decoration:underline; }
+</style>
 </head>
 <body>
 
@@ -114,9 +43,9 @@
     <h1>Internship Recommendation</h1>
   </div>
   <ul>
-    <li><a href="index.html" class="active"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home</a></li>
+    <li><a href="index.html"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home</a></li>
     <li><a href="studentprofile.html"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile</a></li>
-    <li><a href="top5.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Top Internships"> Top Internships</a></li>
+    <li><a href="top5.html" class="active"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Top Internships"> Top Internships</a></li>
     <li><a href="feedback.html"><img src="https://cdn-icons-png.flaticon.com/512/134/134914.png" alt="Feedback"> Feedback</a></li>
     <li><a href="about.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="About"> About</a></li>
   </ul>
@@ -125,44 +54,199 @@
 <h1 class="page-title">Top 5 Recommendations</h1>
 
 <div class="grid" id="internship-grid">
-  <!-- Cards will be inserted dynamically -->
+  <!-- Cards inserted dynamically -->
 </div>
 
 <footer>
-  <p>© 2025 PM Internship Scheme | Designed with ❤ by Team</p>
-  <p>
-    <a href="#">LinkedIn</a> | 
-    <a href="#">Twitter</a> | 
-    <a href="#">GitHub</a>
-  </p>
+  <p>© 2025 AI-Based Internship Recommendation | Designed with ❤ by Team</p>
+  <p><a href="#">LinkedIn</a> | <a href="#">Twitter</a> | <a href="#">GitHub</a></p>
 </footer>
 
 <script>
-  // Fetch top 5 internships from backend
-  fetch('/api/top5')
-    .then(res => res.json())
-    .then(data => {
-      const grid = document.getElementById('internship-grid');
-      grid.innerHTML = '';
-      data.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <div class="title">${item.title}</div>
-          <div class="company">${item.organization}</div>
-          <div class="badge">Match Score: ${item.matchScore}%</div>
-          <div class="description">${item.description}</div>
-          <a href="ai.html?id=${item.id}" class="btn">View Details</a>
-        `;
-        grid.appendChild(card);
-      });
-    })
-    .catch(err => console.error('Error fetching top 5 internships:', err));
+  // Check if user is logged in
+  const token = localStorage.getItem('token'); 
+  if (!token) {
+    alert('You must log in first!');
+    window.location.href = 'login.html';
+  }
+
+  // Fetch top 5 internships personalized for user
+  fetch('http://localhost:5000/api/internships/top5', {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
+  .then(res => {
+    if (res.status === 401) {
+      alert('Session expired. Please login again.');
+      localStorage.removeItem('token');
+      window.location.href = 'login.html';
+    }
+    return res.json(); // Important
+  })
+  .then(data => {
+    const grid = document.getElementById('internship-grid');
+    grid.innerHTML = '';
+
+    if (!data || data.length === 0) {
+      grid.innerHTML = '<p style="text-align:center; color:#555; font-size:1.2rem;">No internships found.</p>';
+      return;
+    }
+
+    data.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="title">${item.title}</div>
+        <div class="company">${item.company || item.organization}</div>
+        <div class="badge">Location: ${item.location || 'N/A'}</div>
+        <div class="description">
+          <strong>Skills:</strong> ${item.skills ? item.skills.join(", ") : 'N/A'} <br>
+          <strong>Duration:</strong> ${item.duration || 'N/A'} <br>
+          <strong>Stipend:</strong> ${item.stipend || 'N/A'}
+        </div>
+        <a href="ai.html?id=${item._id}" class="btn">View Details</a>
+      `;
+      grid.appendChild(card);
+    });
+  })
+  .catch(err => console.error('Error fetching top 5 internships:', err));
 </script>
 
 </body>
 </html>
 
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 5 Recommendations | AI-Based Internship Recommendation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Poppins', sans-serif; margin:0; padding:0; background:linear-gradient(135deg,#f0f4ff,#ffffff); color:#333; }
+  nav { background:linear-gradient(90deg,#1a73e8,#0d47a1); color:white; display:flex; justify-content:space-between; align-items:center; padding:15px 50px; position:sticky; top:0; z-index:1000; box-shadow:0 4px 10px rgba(0,0,0,0.2); }
+  .logo { display:flex; align-items:center; gap:12px; }
+  .logo img { height:42px; width:42px; border-radius:50%; border:2px solid #ffcc00; }
+  .logo h1 { font-size:20px; font-weight:bold; letter-spacing:1px; }
+  nav ul { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+  nav ul li { position:relative; }
+  nav ul li a { text-decoration:none; color:white; font-weight:500; padding:6px 8px; display:flex; align-items:center; gap:6px; transition:color 0.3s; }
+  nav ul li a img { width:18px; height:18px; }
+  nav ul li a::after { content:""; position:absolute; left:0; bottom:-4px; width:0%; height:2px; background:#ffcc00; transition:width 0.3s ease; }
+  nav ul li a:hover::after { width:100%; }
+  nav ul li a:hover { color:#ffcc00; }
+  nav ul li a.active { color:#ffcc00; font-weight:bold; }
+  h1.page-title { text-align:center; margin:40px 0; font-size:2.5rem; color:#2c3e91; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; padding:0 40px 40px; max-width:1200px; margin:auto; }
+  .card { background:#fff; border-radius:16px; padding:20px; box-shadow:0 6px 15px rgba(0,0,0,0.1); transition:transform 0.3s ease, box-shadow 0.3s ease; }
+  .card:hover { transform:translateY(-6px); box-shadow:0 12px 20px rgba(0,0,0,0.2); }
+  .title { font-size:1.4rem; font-weight:bold; color:#2c3e91; margin-bottom:8px; }
+  .company { font-size:1rem; font-weight:500; color:#555; margin-bottom:6px; }
+  .badge { display:inline-block; background:#2c3e91; color:white; padding:6px 14px; border-radius:50px; font-size:0.85rem; font-weight:bold; margin-bottom:12px; }
+  .description { font-size:0.95rem; color:#666; line-height:1.4; margin-bottom:16px; }
+  .btn { display:inline-block; text-decoration:none; padding:10px 18px; border-radius:8px; background:#2c3e91; color:white; font-size:0.95rem; font-weight:600; transition:background 0.3s ease; }
+  .btn:hover { background:#1b2870; }
+  footer { background:#2c3e91; color:white; text-align:center; padding:15px 10px; margin-top:30px; }
+  footer p { margin:5px 0; }
+  footer a { color:#ffd700; margin:0 8px; text-decoration:none; font-weight:500; }
+  footer a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
+    <h1>Internship Recommendation</h1>
+  </div>
+  <ul>
+    <li><a href="index.html"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home</a></li>
+    <li><a href="studentprofile.html"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile</a></li>
+    <li><a href="top5.html" class="active"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Top Internships"> Top Internships</a></li>
+    <li><a href="feedback.html"><img src="https://cdn-icons-png.flaticon.com/512/134/134914.png" alt="Feedback"> Feedback</a></li>
+    <li><a href="about.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="About"> About</a></li>
+  </ul>
+</nav>
+
+<h1 class="page-title">Top 5 Recommendations</h1>
+
+<div class="grid" id="internship-grid">
+  <!-- Cards inserted dynamically -->
+<!-- </div> -->
+
+<!-- <footer>
+  <p>© 2025 AI-Based Internship Recommendation | Designed with ❤ by Team</p>
+  <p><a href="#">LinkedIn</a> | <a href="#">Twitter</a> | <a href="#">GitHub</a></p>
+</footer> -->
+
+<!-- <script>
+  // Check if user is logged in
+  const token = localStorage.getItem('token'); // Token saved at login
+  if (!token) {
+    alert('You must log in first!');
+    window.location.href = 'login.html';
+  }
+  return res.json(); 
+  // Fetch top 5 internships personalized for user
+  fetch('http://localhost:5000/api/top5', {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
+  .then(data => {
+  const grid = document.getElementById('internship-grid');
+  grid.innerHTML = '';
+  data.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="title">${item.title}</div>
+      <div class="company">${item.company}</div>
+      <div class="badge">Location: ${item.location}</div>
+      <div class="description">
+        <strong>Skills:</strong> ${item.skills.join(", ")} <br>
+        <strong>Duration:</strong> ${item.duration} <br>
+        <strong>Stipend:</strong> ${item.stipend}
+      </div>
+      <a href="ai.html?id=${item._id}" class="btn">View Details</a>
+    `;
+    grid.appendChild(card);
+  });
+})
+ .catch(err => console.error('Error fetching top 5 internships:', err));
+</script>
+
+</body>
+</html> -->
+
+<!-- // .then(res => {
+  //   if (res.status === 401) {
+  //     alert('Session expired. Please login again.');
+  //     localStorage.removeItem('authToken');
+  //     window.location.href = 'login.html';
+  //   }
+  //   return res.json();
+  // })
+  // .then(data => {
+  //   const grid = document.getElementById('internship-grid');
+  //   grid.innerHTML = '';
+  //   data.forEach(item => {
+  //     const card = document.createElement('div');
+  //     card.className = 'card';
+  //     card.innerHTML = `
+  //       <div class="title">${item.title}</div>
+  //       <div class="company">${item.organization}</div>
+  //       <div class="badge">Match Score: ${item.matchScore}%</div>
+  //       <div class="description">${item.description}</div>
+  //       <a href="ai.html?id=${item.id}" class="btn">View Details</a>
+  //     `;
+  //     grid.appendChild(card);
+  //   });
+  // }) -->
 
 
 
@@ -432,4 +516,4 @@
   </footer>
 
 </body>
-</html> --> -->
+</html> --> --> -->

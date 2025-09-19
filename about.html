@@ -1,6 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About & Contact | AI Internship Engine</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+/* Navbar */
+nav {
+  background: linear-gradient(90deg, #1a73e8, #0d47a1);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo img { height: 42px; width: 42px; border-radius: 50%; border: 2px solid #ffcc00; }
+.logo h1 { font-size: 20px; font-weight: bold; letter-spacing: 1px; }
+nav ul { list-style: none; display: flex; gap: 25px; }
+nav ul li { position: relative; }
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+nav ul li a img { width: 18px; height: 18px; }
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #ffcc00;
+  transition: width 0.3s ease;
+}
+nav ul li a:hover::after { width: 100%; }
+nav ul li a:hover { color: #ffcc00; }
+nav ul li a.active { color: #ffcc00; font-weight: bold; }
+
+/* Body */
+body { background: linear-gradient(135deg, #1e3c72, #2a5298); color: #fff; display: flex; flex-direction: column; min-height: 100vh; }
+.container { width: 90%; max-width: 1100px; margin: auto; padding: 2rem 0; flex: 1; }
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+.card:hover { transform: translateY(-8px); }
+h1, h2 { text-align: center; margin-bottom: 1rem; }
+h1 { font-size: 2.8rem; background: linear-gradient(to right, #00f2fe, #4facfe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+h2 { font-size: 2rem; margin-bottom: 1rem; color: #00e6ff; }
+p, li, a { font-size: 1rem; color: #f2f2f2; }
+ul { list-style: none; margin-top: 1rem; }
+ul li { padding: 0.5rem 0; }
+
+/* Team */
+.team { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+.member {
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+  transition: 0.3s;
+}
+.member:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
+.member h3 { font-size: 1.3rem; margin-bottom: 0.3rem; color: #ffcc70; }
+.member span { font-size: 0.9rem; color: #ccc; }
+.contact-label { margin-top: 0.7rem; font-size: 0.85rem; color: #ffeb3b; }
+.links { margin-top: 0.5rem; }
+.links a { margin: 0 5px; color: #00f2fe; text-decoration: none; transition: color 0.3s; }
+.links a:hover { color: #ffcc70; }
+
+/* Footer */
+footer { background: #1976d2; color: #fff; text-align: center; padding: 15px 0; margin-top: auto; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Logo">
+    <h1>Internship Recommendation</h1>
+  </div>
+  <ul>
+    <li><a href="index.html"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home</a></li>
+    <li><a href="studentprofile.html"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile</a></li>
+    <li><a href="top5.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Top Internships"> Top Internships</a></li>
+    <li><a href="feedback.html"><img src="https://cdn-icons-png.flaticon.com/512/134/134914.png" alt="Feedback"> Feedback</a></li>
+    <li><a href="about.html" class="active"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="About"> About</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="card">
+    <h1>About This Project</h1>
+    <p>This project is an AI-powered internship recommendation system designed to connect students with the most relevant opportunities. It analyzes student skills, preferences, and interests to suggest the best internship options available under the PM Internship Scheme.</p>
+  </div>
+
+  <div class="card">
+    <h2>Meet Our Team</h2>
+    <div class="team">
+      <div class="member">
+        <h3>Shivani Jaiswal</h3>
+        <span>Frontend Developer</span><br>
+        <div class="contact-label">Contact:</div>
+        <a href="mailto:shivani@gmail.com">shivani@gmail.com</a>
+        <div class="links">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+      <div class="member">
+        <h3>Shivani Chourasiya</h3>
+        <span>Frontend Developer</span><br>
+        <div class="contact-label">Contact:</div>
+        <a href="mailto:rahul@gmail.com">shivi@gmail.com</a>
+        <div class="links">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+      <div class="member">
+        <h3>Kaushal Dhakad</h3>
+        <span>Frontend Developer</span><br>
+        <div class="contact-label">Contact:</div>
+        <a href="mailto:ananya@gmail.com">Kaushal@gmail.com</a>
+        <div class="links">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+      <div class="member">
+        <h3>Aditi Sharma</h3>
+        <span>Backend Developer<br>AIML expert</span><br>
+        <div class="contact-label">Contact:</div>
+        <a href="mailto:aditya@gmail.com">aditi@gmail.com</a>
+        <div class="links">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+      <div class="member">
+        <h3>Aditya Sahu</h3>
+        <span>UI/UX Designer<br>Backend Developer</span><br>
+        <div class="contact-label">Contact:</div>
+        <a href="mailto:karan@gmail.com">aditya@gmail.com</a>
+        <div class="links">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+      <div class="member">
+        <h3>Priyanshi</h3>
+        <span>UI/UX Designer <br> Research</span><br>
+        <div class="contact-label">Contact:</div>
+        <a href="mailto:a@gmail.com">priyanshi@gmail.com</a>
+        <div class="links">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 AI-Based Internship Recommendation Engine | Smart India Hackathon</p>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About & Contact | AI Internship Engine</title>
@@ -231,16 +425,16 @@
 <li><a href="about.html" class="active"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="About"> About</a></li>
 
       <!-- <li><a href="index.html" class="active"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home"> Home</a></li> -->
-      <li><a href="studentprofile.html"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile</a></li>
+      <!-- <li><a href="studentprofile.html"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"> Profile</a></li>
      
       <li><a href="top5.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Top Internships"> Top Internships</a></li>
 
-      <li><a href="feedback.html"><img src="https://cdn-icons-png.flaticon.com/512/134/134914.png" alt="Feedback"> Feedback</a></li>
+      <li><a href="feedback.html"><img src="https://cdn-icons-png.flaticon.com/512/134/134914.png" alt="Feedback"> Feedback</a></li> -->
       <!-- <li><a href="about.html"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png" alt="About"> About</a></li> -->
-    </ul>
-  </nav>
+    <!-- </ul> --> -->
+  <!-- </nav> -->
 
-  <div class="container">
+  <!-- <div class="container">
     <div class="card">
       <h1>About This Project</h1>
       <p>This project is an AI-powered internship recommendation system designed to connect students with the most relevant opportunities. It analyzes student skills, preferences, and interests to suggest the best internship options available under the PM Internship Scheme.</p>
@@ -311,11 +505,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <footer>
+  <!-- <footer>
     <p>© 2025 AI-Based Internship Recommendation Engine | Smart India Hackathon</p>
   </footer>
 
 </body>
-</html>
+</html> -->

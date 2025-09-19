@@ -31,6 +31,7 @@
   .section h2 {color:#6a11cb; font-size:1.4rem; margin-bottom:10px;}
   .section p, .section ul {color:#555; line-height:1.7; font-size:1rem;}
   ul {padding-left:20px;}
+  .skill-badge {display:inline-block; background:#2575fc; color:white; padding:5px 12px; border-radius:50px; font-weight:500; margin:2px;}
   .apply-btn {display:inline-block; text-decoration:none; padding:14px 28px; border-radius:50px; background: linear-gradient(135deg,#6a11cb,#2575fc); color:white; font-weight:600; font-size:1.05rem; transition: all 0.3s ease; box-shadow:0 6px 15px rgba(0,0,0,0.2);}
   .apply-btn:hover {background: linear-gradient(135deg,#ffd700,#ffb400); color:#2c3e91; transform:scale(1.08); box-shadow:0 8px 20px rgba(0,0,0,0.3);}
   footer {background:#1a73e8; color:white; text-align:center; padding:20px; margin-top:40px;}
@@ -76,7 +77,7 @@
 
   <div class="section">
     <h2>Eligibility</h2>
-    <ul id="eligibility"></ul>
+    <div id="eligibility">Loading...</div>
   </div>
 
   <div class="section">
@@ -91,50 +92,79 @@
   <p>© 2025 PM Internship Scheme | Designed with ❤ by Team</p>
   <p><a href="#">LinkedIn</a> | <a href="#">Twitter</a> | <a href="#">GitHub</a></p>
 </footer>
-
 <script>
-  // Get internship ID from URL query string
   const urlParams = new URLSearchParams(window.location.search);
   const internshipId = urlParams.get('id');
+  const token = localStorage.getItem('token'); // agar authentication token hai
+
+  if (!token) {
+    alert('You must log in first!');
+    window.location.href = 'login.html';
+  }
 
   if (!internshipId) {
     document.getElementById('internship-title').innerText = "Internship Not Found!";
   } else {
-    // Fetch internship details from backend
-    fetch(`/api/internship/${internshipId}`)
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('internship-title').innerText = data.title;
-        document.getElementById('match-score').innerText = `Match Score: ${data.matchScore}%`;
-        document.getElementById('organization').innerText = data.organization;
-        document.getElementById('about').innerText = data.about;
+    // Fetch single internship details
+    fetch(`http://localhost:5000/api/internships/${internshipId}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+    .then(res => {
+      if(res.status === 401){
+        alert('Session expired. Please login again.');
+        localStorage.removeItem('token');
+        window.location.href = 'login.html';
+      }
+      return res.json();
+    })
+    .then(data => {
+      document.getElementById('internship-title').innerText = data.title || 'N/A';
+      document.getElementById('match-score').innerText = `Match Score: ${data.matchScore || '--'}%`;
+      document.getElementById('organization').innerText = data.organization || data.company || 'N/A';
+      document.getElementById('about').innerText = data.about || 'N/A';
 
-        const respList = document.getElementById('responsibilities');
-        respList.innerHTML = '';
+      // Responsibilities
+      const respList = document.getElementById('responsibilities');
+      respList.innerHTML = '';
+      if(data.responsibilities && data.responsibilities.length > 0){
         data.responsibilities.forEach(item => {
           const li = document.createElement('li');
           li.innerText = item;
           respList.appendChild(li);
         });
+      } else {
+        respList.innerHTML = '<li>N/A</li>';
+      }
 
-        const eligList = document.getElementById('eligibility');
-        eligList.innerHTML = '';
-        data.eligibility.forEach(item => {
-          const li = document.createElement('li');
-          li.innerText = item;
-          eligList.appendChild(li);
+      // Eligibility as badges
+      const eligContainer = document.getElementById('eligibility');
+      eligContainer.innerHTML = '';
+      const skillsArray = data.skills || data.eligibility || [];
+      if(skillsArray.length > 0){
+        skillsArray.forEach(skill => {
+          const span = document.createElement('span');
+          span.className = 'skill-badge';
+          span.innerText = skill;
+          eligContainer.appendChild(span);
         });
+      } else {
+        eligContainer.innerText = 'N/A';
+      }
 
-        document.getElementById('duration').innerText = data.duration;
-      })
-      .catch(err => console.error('Error fetching internship:', err));
+      document.getElementById('duration').innerText = `${data.duration || 'N/A'} | ${data.location || 'N/A'}`;
+
+    })
+    .catch(err => {
+      console.error('Error fetching internship:', err);
+      alert('Error loading internship details. Please try again later.');
+    });
 
     // Apply button
     document.getElementById('apply-btn').addEventListener('click', () => {
-      fetch('/api/apply', {
+      fetch('http://localhost:5000/api/apply', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({internshipId: internshipId, studentId: 123}) // replace with actual studentId
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+        body: JSON.stringify({internshipId: internshipId, studentId: 123}) // replace studentId dynamically
       })
       .then(res => res.json())
       .then(response => alert(response.message))
